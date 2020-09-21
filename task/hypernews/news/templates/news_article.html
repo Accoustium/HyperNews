@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block body_css %}
+{% endblock body_css %}
+
+{% block body_content %}
+    <div class="new_article">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.created }}</p>
+        <p>{{ article.text }}</p>
+    </div>
+
+    <a href="{% url 'news_splash' %}" target="_blank">Home Page</a>
+{% endblock body_content %}

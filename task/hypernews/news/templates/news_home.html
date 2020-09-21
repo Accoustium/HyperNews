@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}News Contents{% endblock title %}
+
+{% block body_content %}
+    <h2>Hyper news</h2>
+
+    <div>
+        <form method="get" action="{% url 'news_splash' %}">
+            {% csrf_token %}
+            <label for="q"></label>
+            <input type="text" id="q" name="q"><br/><br/>
+            <button type="submit" class="search-label-icon">Search</button>
+        </form>
+    </div>
+
+    {% for date, articles in news_articles.items %}
+        <h4>{{ date }}</h4>
+
+        <ul>
+            {% for article in articles %}
+            <li><a target="_blank" href="{% url 'single_article' link_=article.link %}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <a href="{% url 'create_news' %}" target="_blank">Create News Article</a>
+
+{% endblock body_content %}

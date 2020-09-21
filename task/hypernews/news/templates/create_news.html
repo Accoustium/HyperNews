@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create News Article{% endblock title %}
+
+{% block body_content %}
+    <div>
+        <form role="form" method="post" action="{% url 'create_news' %}">
+            {% csrf_token %}
+
+            {{ form | crispy }}
+
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+
+    <div><a href="{% url 'news_splash' %}" target="_blank">News Home</a></div>
+{% endblock body_content %}
